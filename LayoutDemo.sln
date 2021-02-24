@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayoutDemo", "LayoutDemo\LayoutDemo.csproj", "{2E9DC7F8-A108-4754-8179-8FCD0292A19C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E9DC7F8-A108-4754-8179-8FCD0292A19C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E9DC7F8-A108-4754-8179-8FCD0292A19C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E9DC7F8-A108-4754-8179-8FCD0292A19C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E9DC7F8-A108-4754-8179-8FCD0292A19C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
