@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen"
         UseLayoutRounding="True"
         Width="700" Height="500"
-        Title="LayoutDemo">
+        Title="{Binding $self.Bounds, StringFormat={}LayoutDemo {0}}">
     
     <local:AdaptivePanel UseLayoutRounding="False">
         <Panel Background="Red"/>
