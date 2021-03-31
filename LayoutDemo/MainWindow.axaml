@@ -10,7 +10,7 @@
         Width="700" Height="500"
         Title="LayoutDemo">
     
-    <local:AdaptivePanel>
+    <local:AdaptivePanel UseLayoutRounding="False">
         <Panel Background="Red"/>
         <Panel Background="Green"/>
         <Panel Background="Blue"/>
