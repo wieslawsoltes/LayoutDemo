@@ -1,9 +1,54 @@
 ﻿using System;
+using System.Globalization;
 using Avalonia;
 using Avalonia.Controls;
 
 namespace LayoutDemo
 {
+    public class AdaptiveGrid : Grid
+    {
+        private string D2S(double value)
+        {
+            return value.ToString(CultureInfo.InvariantCulture);
+        }
+        
+        public AdaptiveGrid()
+        {
+            double twoColumnsTriggerWidth = 500;
+            double aspectRatio = 0.5;
+            
+            this.GetObservable(BoundsProperty).Subscribe(x =>
+            {
+                Console.WriteLine($"Size {x.Size}");
+                
+                if (x.Size.Width < twoColumnsTriggerWidth)
+                {
+                    var columnDefinitions = "1*,1*";
+                    ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitions);
+                    Console.WriteLine($"ColumnDefinitions {columnDefinitions}");
+                    var columnWidth = x.Size.Width / 2;
+                    var itemHeight = columnWidth * aspectRatio;
+                    var rowDefinitions = $"{D2S(itemHeight)},{D2S(itemHeight)}";
+                    Console.WriteLine($"RowDefinitions {rowDefinitions}");
+                    RowDefinitions = RowDefinitions.Parse(rowDefinitions);
+                }
+                else
+                {
+                    var columnDefinitions = "1*,1*,1*";
+                    Console.WriteLine($"ColumnDefinitions {columnDefinitions}");
+                    ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitions);
+                    var columnWidth = x.Size.Width / 3;
+                    var itemHeight = columnWidth * aspectRatio;
+                    var rowDefinitions = $"{D2S(itemHeight)},{D2S(itemHeight)}";
+                    Console.WriteLine($"RowDefinitions {rowDefinitions}");
+                    RowDefinitions = RowDefinitions.Parse(rowDefinitions);
+                }
+                InvalidateMeasure();
+                InvalidateArrange();
+            });
+        }
+    }
+
     public class AdaptivePanel : Panel
     {
         private void MeasureArrange(Size panelSize, bool isMeasure)
