@@ -3,12 +3,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LayoutDemo"
-        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="400"
+        mc:Ignorable="d" d:DesignWidth="550" d:DesignHeight="500"
         x:Class="LayoutDemo.MainWindow"
         WindowStartupLocation="CenterScreen"
         UseLayoutRounding="True"
-        Width="600" Height="400"
+        Width="700" Height="500"
         Title="LayoutDemo">
+    
+    <local:AdaptivePanel>
+        <Panel Background="Red"/>
+        <Panel Background="Green"/>
+        <Panel Background="Blue"/>
+        <Panel Background="Yellow"/>
+        <Panel Background="Black"/>
+    </local:AdaptivePanel>
+
+    <!--
     <TabControl>
         <TabItem Header="WeightedPanel">
             <local:WeightedPanelView/>
@@ -17,4 +27,6 @@
             <local:VanishingPointPanelView/>
         </TabItem>
     </TabControl>
+    -->
+
 </Window>
