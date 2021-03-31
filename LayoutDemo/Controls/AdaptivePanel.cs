@@ -14,36 +14,44 @@ namespace LayoutDemo
         
         public AdaptiveGrid()
         {
+            this.GetObservable(BoundsProperty).Subscribe(x => Init(x));
+        }
+
+        private void Init(Rect size)
+        {
+            Console.WriteLine($"Size {size.Size}");
+            if (size.Width <= 0)
+            {
+                Console.WriteLine($"ColumnDefinitions {ColumnDefinitions}");
+                Console.WriteLine($"RowDefinitions {RowDefinitions}");
+                return;
+            }
+
             double twoColumnsTriggerWidth = 500;
             double aspectRatio = 0.5;
-            
-            this.GetObservable(BoundsProperty).Subscribe(x =>
-            {
-                Console.WriteLine($"Size {x.Size}");
 
-                if (x.Size.Width < twoColumnsTriggerWidth)
-                {
-                    var columnDefinitions = "1*,1*";
-                    ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitions);
-                    Console.WriteLine($"ColumnDefinitions {columnDefinitions}");
-                    var columnWidth = x.Size.Width / 2;
-                    var itemHeight = columnWidth * aspectRatio;
-                    var rowDefinitions = $"{D2S(itemHeight)},{D2S(itemHeight)}";
-                    Console.WriteLine($"RowDefinitions {rowDefinitions}");
-                    RowDefinitions = RowDefinitions.Parse(rowDefinitions);
-                }
-                else
-                {
-                    var columnDefinitions = "1*,1*,1*";
-                    Console.WriteLine($"ColumnDefinitions {columnDefinitions}");
-                    ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitions);
-                    var columnWidth = x.Size.Width / 3;
-                    var itemHeight = columnWidth * aspectRatio;
-                    var rowDefinitions = $"{D2S(itemHeight)},{D2S(itemHeight)}";
-                    Console.WriteLine($"RowDefinitions {rowDefinitions}");
-                    RowDefinitions = RowDefinitions.Parse(rowDefinitions);
-                }
-            });
+            if (size.Size.Width < twoColumnsTriggerWidth)
+            {
+                var columnDefinitions = "1*,1*";
+                ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitions);
+                Console.WriteLine($"ColumnDefinitions {columnDefinitions}");
+                var columnWidth = size.Size.Width / 2;
+                var itemHeight = columnWidth * aspectRatio;
+                var rowDefinitions = $"{D2S(itemHeight)},{D2S(itemHeight)}";
+                Console.WriteLine($"RowDefinitions {rowDefinitions}");
+                RowDefinitions = RowDefinitions.Parse(rowDefinitions);
+            }
+            else
+            {
+                var columnDefinitions = "1*,1*,1*";
+                Console.WriteLine($"ColumnDefinitions {columnDefinitions}");
+                //ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitions);
+                var columnWidth = size.Size.Width / 3;
+                var itemHeight = columnWidth * aspectRatio;
+                var rowDefinitions = $"{D2S(itemHeight)},{D2S(itemHeight)}";
+                Console.WriteLine($"RowDefinitions {rowDefinitions}");
+                RowDefinitions = RowDefinitions.Parse(rowDefinitions);
+            }
         }
     }
 
