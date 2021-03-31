@@ -20,7 +20,7 @@ namespace LayoutDemo
             this.GetObservable(BoundsProperty).Subscribe(x =>
             {
                 Console.WriteLine($"Size {x.Size}");
-                
+
                 if (x.Size.Width < twoColumnsTriggerWidth)
                 {
                     var columnDefinitions = "1*,1*";
@@ -43,8 +43,6 @@ namespace LayoutDemo
                     Console.WriteLine($"RowDefinitions {rowDefinitions}");
                     RowDefinitions = RowDefinitions.Parse(rowDefinitions);
                 }
-                InvalidateMeasure();
-                InvalidateArrange();
             });
         }
     }
