@@ -17,10 +17,10 @@ namespace LayoutDemo
             this.GetObservable(BoundsProperty).Subscribe(x => Init(x));
         }
 
-        private void Init(Rect size)
+        private void Init(Rect rect)
         {
-            Console.WriteLine($"Size {size.Size}");
-            if (size.Width <= 0)
+            Console.WriteLine($"Size {rect.Size}");
+            if (rect.Size.Width <= 0)
             {
                 Console.WriteLine($"ColumnDefinitions {ColumnDefinitions}");
                 Console.WriteLine($"RowDefinitions {RowDefinitions}");
@@ -30,27 +30,33 @@ namespace LayoutDemo
             double twoColumnsTriggerWidth = 500;
             double aspectRatio = 0.5;
 
-            if (size.Size.Width < twoColumnsTriggerWidth)
+            if (rect.Size.Width < twoColumnsTriggerWidth)
             {
-                var columnDefinitions = "1*,1*";
-                ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitions);
-                Console.WriteLine($"ColumnDefinitions {columnDefinitions}");
-                var columnWidth = size.Size.Width / 2;
+                var columnDefinitionsStr = "1*,1*";
+                
+                var columnWidth = rect.Size.Width / 2;
                 var itemHeight = columnWidth * aspectRatio;
-                var rowDefinitions = $"{D2S(itemHeight)},{D2S(itemHeight)}";
-                Console.WriteLine($"RowDefinitions {rowDefinitions}");
-                RowDefinitions = RowDefinitions.Parse(rowDefinitions);
+                var rowDefinitionStr = $"{D2S(itemHeight)},{D2S(itemHeight)}";
+                
+                ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
+                RowDefinitions = RowDefinitions.Parse(rowDefinitionStr);
+                
+                Console.WriteLine($"ColumnDefinitions {columnDefinitionsStr}");
+                Console.WriteLine($"RowDefinitions {rowDefinitionStr}");
             }
             else
             {
-                var columnDefinitions = "1*,1*,1*";
-                Console.WriteLine($"ColumnDefinitions {columnDefinitions}");
-                //ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitions);
-                var columnWidth = size.Size.Width / 3;
+                var columnDefinitionsStr = "1*,1*,1*";
+                
+                var columnWidth = rect.Size.Width / 3;
                 var itemHeight = columnWidth * aspectRatio;
-                var rowDefinitions = $"{D2S(itemHeight)},{D2S(itemHeight)}";
-                Console.WriteLine($"RowDefinitions {rowDefinitions}");
-                RowDefinitions = RowDefinitions.Parse(rowDefinitions);
+                var rowDefinitionsStr = $"{D2S(itemHeight)},{D2S(itemHeight)}";
+                
+                ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
+                RowDefinitions = RowDefinitions.Parse(rowDefinitionsStr);
+                
+                Console.WriteLine($"ColumnDefinitions {columnDefinitionsStr}");
+                Console.WriteLine($"RowDefinitions {rowDefinitionsStr}");
             }
         }
     }
