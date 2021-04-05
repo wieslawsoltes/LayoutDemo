@@ -58,13 +58,13 @@ namespace LayoutDemo
                 var itemHeight = columnWidth * aspectRatio;
                 var rowDefinitionsStr = $"{D2S(itemHeight)},{D2S(itemHeight)}";
                 
-                //ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
-                //RowDefinitions = RowDefinitions.Parse(rowDefinitionStr);
-                var columnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
-                var rowDefinitions = RowDefinitions.Parse(rowDefinitionsStr);
-                SetColumnDefinitions(columnDefinitions);
-                SetRowDefinitions(rowDefinitions);
-                InvalidateMeasure();
+                ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
+                RowDefinitions = RowDefinitions.Parse(rowDefinitionsStr);
+                //var columnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
+                //var rowDefinitions = RowDefinitions.Parse(rowDefinitionsStr);
+                //SetColumnDefinitions(columnDefinitions);
+                //SetRowDefinitions(rowDefinitions);
+                //InvalidateMeasure();
                 
                 Console.WriteLine($"ColumnDefinitions {columnDefinitionsStr}");
                 Console.WriteLine($"RowDefinitions {rowDefinitionsStr}");
@@ -77,13 +77,13 @@ namespace LayoutDemo
                 var itemHeight = columnWidth * aspectRatio;
                 var rowDefinitionsStr = $"{D2S(itemHeight)},{D2S(itemHeight)}";
                 
-                //ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
-                //RowDefinitions = RowDefinitions.Parse(rowDefinitionsStr);
-                var columnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
-                var rowDefinitions = RowDefinitions.Parse(rowDefinitionsStr);
-                SetColumnDefinitions(columnDefinitions);
-                SetRowDefinitions(rowDefinitions);
-                InvalidateMeasure();
+                ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
+                RowDefinitions = RowDefinitions.Parse(rowDefinitionsStr);
+                //var columnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
+                //var rowDefinitions = RowDefinitions.Parse(rowDefinitionsStr);
+                //SetColumnDefinitions(columnDefinitions);
+                //SetRowDefinitions(rowDefinitions);
+                //InvalidateMeasure();
                 
                 Console.WriteLine($"ColumnDefinitions {columnDefinitionsStr}");
                 Console.WriteLine($"RowDefinitions {rowDefinitionsStr}");
