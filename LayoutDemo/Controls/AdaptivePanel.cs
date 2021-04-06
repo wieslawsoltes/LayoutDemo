@@ -160,18 +160,11 @@ namespace LayoutDemo
                     layoutId = i;
                 }
             }
-                
-                
+
             var columnWidth = panelSize.Width / columnsNum;
-            // var totalWidth = Children.Count * columnWidth;
-            // var rows = (int)Math.Ceiling(totalWidth / panelSize.Width);
             var itemHeight = columnWidth * aspectRatio;
-
-            
-
             int column = 0;
             int row = 0;
-
             int rowIncrement = 1;
 
             for (int index = 0; index < Children.Count; index++)
@@ -210,7 +203,6 @@ namespace LayoutDemo
         protected override Size MeasureOverride(Size availableSize)
         {
             var measureSize = MeasureArrange(availableSize, true);
-
             // return new Size(availableSize.Width, availableSize.Height);
             return measureSize;
         }
@@ -218,7 +210,6 @@ namespace LayoutDemo
         protected override Size ArrangeOverride(Size finalSize)
         {
             MeasureArrange(finalSize, false);
-
             return finalSize;
         }
     }
