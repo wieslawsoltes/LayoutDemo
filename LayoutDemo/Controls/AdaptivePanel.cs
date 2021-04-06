@@ -155,7 +155,7 @@ namespace LayoutDemo
         {
             double aspectRatio = AspectRatio;
 
-            var columnsNum = default(int);
+            var columnsNum = 1;
             var layoutId = 0;
 
             for (int i = 0; i < Triggers.Count; i++)
