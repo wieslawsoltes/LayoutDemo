@@ -142,7 +142,7 @@ namespace LayoutDemo
             set => SetValue(TriggersProperty, value);
         }
 
-        private void MeasureArrange(Size panelSize, bool isMeasure)
+        private Size MeasureArrange(Size panelSize, bool isMeasure)
         {
             double aspectRatio = 0.5;
 
@@ -203,13 +203,16 @@ namespace LayoutDemo
                     element.Arrange(rect);
                 }
             }
+
+            return new Size(panelSize.Width, itemHeight * row);
         }
  
         protected override Size MeasureOverride(Size availableSize)
         {
-            MeasureArrange(availableSize, true);
+            var measureSize = MeasureArrange(availableSize, true);
 
-            return new Size(availableSize.Width, availableSize.Height);
+            // return new Size(availableSize.Width, availableSize.Height);
+            return measureSize;
         }
 
         protected override Size ArrangeOverride(Size finalSize)
