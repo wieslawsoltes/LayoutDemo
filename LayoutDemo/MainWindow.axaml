@@ -10,33 +10,46 @@
         Width="700" Height="500"
         Title="{Binding $self.Bounds, StringFormat={}LayoutDemo {0}}">
 
-    <Grid RowDefinitions="Auto,*">
+    <DockPanel>
+       
+        <Label Content="Test Wallet" Margin="12" DockPanel.Dock="Top"/>
 
-        <local:AdaptivePanel Grid.Row="0" 
-                             AspectRatio="0.5"
-                             Columns="1, 2, 3"
-                             Triggers="150, 300, 500"
-                             UseLayoutRounding="False" 
-                             Background="LightGray">
-            <Border CornerRadius="4" Margin="4" Background="Red" local:AdaptivePanel.ColumnSpan="1, 1, 1" local:AdaptivePanel.RowSpan="1, 1, 1" />
-            <Border CornerRadius="4" Margin="4" Background="Green" local:AdaptivePanel.ColumnSpan="1, 1, 1" local:AdaptivePanel.RowSpan="1, 1, 1" />
-            <Border CornerRadius="4" Margin="4" Background="Blue" local:AdaptivePanel.ColumnSpan="1, 1, 1" local:AdaptivePanel.RowSpan="1, 1, 1" />
-            <Border CornerRadius="4" Margin="4" Background="Yellow" local:AdaptivePanel.ColumnSpan="1, 1, 1" local:AdaptivePanel.RowSpan="1, 1, 2" />
-            <Border CornerRadius="4" Margin="4" Background="Black" local:AdaptivePanel.ColumnSpan="1, 2, 2" local:AdaptivePanel.RowSpan="1, 2, 2"/>
-        </local:AdaptivePanel>
+        <Grid RowDefinitions="Auto,*">
 
-        <DataGrid Grid.Row="1" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn CanUserSort="False" Header="Date"/>
-                <DataGridTextColumn CanUserSort="False" Header="Description"/>
-                <DataGridTextColumn CanUserSort="False" Header="Outgoing"/>
-                <DataGridTextColumn CanUserSort="False" Header="Incoming"/>
-                <DataGridTextColumn CanUserSort="False" Header="Status"/>
-            </DataGrid.Columns>
-        </DataGrid>
+            <local:AdaptivePanel Grid.Row="0" 
+                                 Margin="12,0,12,0"
+                                 AspectRatio="0.5"
+                                 Columns="1, 2, 3"
+                                 Triggers="150, 300, 500"
+                                 UseLayoutRounding="False" 
+                                 Background="LightGray">
+                <Border CornerRadius="4" Margin="4" Background="Red" local:AdaptivePanel.ColumnSpan="1, 1, 1" local:AdaptivePanel.RowSpan="1, 1, 1" />
+                <Border CornerRadius="4" Margin="4" Background="Green" local:AdaptivePanel.ColumnSpan="1, 1, 1" local:AdaptivePanel.RowSpan="1, 1, 1" />
+                <Border CornerRadius="4" Margin="4" Background="Blue" local:AdaptivePanel.ColumnSpan="1, 1, 1" local:AdaptivePanel.RowSpan="1, 1, 1" />
+                <Border CornerRadius="4" Margin="4" Background="Yellow" local:AdaptivePanel.ColumnSpan="1, 1, 1" local:AdaptivePanel.RowSpan="1, 1, 2" />
+                <Border CornerRadius="4" Margin="4" Background="Black" local:AdaptivePanel.ColumnSpan="1, 2, 2" local:AdaptivePanel.RowSpan="1, 2, 2"/>
+            </local:AdaptivePanel>
 
-    </Grid>
+            <DockPanel Grid.Row="1">
 
+                <Label Content="Transaction History" Margin="12" DockPanel.Dock="Top"/>
+                
+                <DataGrid  AutoGenerateColumns="False" Margin="12,0,12,12">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn CanUserSort="False" Header="Date"/>
+                        <DataGridTextColumn CanUserSort="False" Header="Description"/>
+                        <DataGridTextColumn CanUserSort="False" Header="Outgoing"/>
+                        <DataGridTextColumn CanUserSort="False" Header="Incoming"/>
+                        <DataGridTextColumn CanUserSort="False" Header="Status"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </DockPanel>
+                
+        </Grid>
+ 
+    </DockPanel>
+    
     <!--
     <local:AdaptiveGrid UseLayoutRounding="False" ShowGridLines="True">
         <Panel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red"/>
