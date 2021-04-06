@@ -11,7 +11,9 @@
         Title="{Binding $self.Bounds, StringFormat={}LayoutDemo {0}}">
  
     <Grid RowDefinitions="Auto,*">
-        <local:AdaptivePanel Columns="1, 2, 3"
+        <local:AdaptivePanel Grid.Row="0" 
+                             AspectRatio="0.5"
+                             Columns="1, 2, 3"
                              Triggers="150, 300, 500"
                              UseLayoutRounding="False" 
                              Background="LightGray">
