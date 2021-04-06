@@ -10,9 +10,9 @@
         Width="700" Height="500"
         Title="{Binding $self.Bounds, StringFormat={}LayoutDemo {0}}">
  
-    <Grid RowDefinitions="400,*">
+    <Grid RowDefinitions="Auto,*">
         <local:AdaptivePanel Columns="1, 2, 3"
-                             Triggers="250, 500, 800"
+                             Triggers="150, 300, 500"
                              UseLayoutRounding="False" 
                              Background="LightGray">
             <Border CornerRadius="4" Margin="4" Background="Red" local:AdaptivePanel.ColumnSpan="1, 1, 1" local:AdaptivePanel.RowSpan="1, 1, 1" />
@@ -22,7 +22,6 @@
             <Border CornerRadius="4" Margin="4" Background="Black" local:AdaptivePanel.ColumnSpan="1, 2, 2" local:AdaptivePanel.RowSpan="1, 2, 2"/>
         </local:AdaptivePanel>
     </Grid>
-
 
     <!--
     <local:AdaptiveGrid UseLayoutRounding="False" ShowGridLines="True">
