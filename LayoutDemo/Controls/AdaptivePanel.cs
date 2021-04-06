@@ -94,6 +94,9 @@ namespace LayoutDemo
 
     public class AdaptivePanel : Panel
     {
+        public static readonly StyledProperty<double> AspectRatioProperty =
+            AvaloniaProperty.Register<AdaptivePanel, double>(nameof(AspectRatio), 0.5);
+
         public static readonly StyledProperty<AvaloniaList<int>> ColumnsProperty =
             AvaloniaProperty.Register<AdaptivePanel, AvaloniaList<int>>(nameof(Columns), new AvaloniaList<int>() { 1 });
 
@@ -130,6 +133,12 @@ namespace LayoutDemo
             element!.SetValue(RowSpanProperty, value);
         }
 
+        public double AspectRatio
+        {
+            get => GetValue(AspectRatioProperty);
+            set => SetValue(AspectRatioProperty, value);
+        }
+
         public AvaloniaList<int> Columns
         {
             get => GetValue(ColumnsProperty);
@@ -144,7 +153,7 @@ namespace LayoutDemo
 
         private Size MeasureArrange(Size panelSize, bool isMeasure)
         {
-            double aspectRatio = 0.5;
+            double aspectRatio = AspectRatio;
 
             var columnsNum = default(int);
             var layoutId = 0;
