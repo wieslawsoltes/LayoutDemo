@@ -9,8 +9,7 @@
         UseLayoutRounding="True"
         Width="700" Height="500"
         Title="{Binding $self.Bounds, StringFormat={}LayoutDemo {0}}">
-    
-    <!--
+ 
     <local:AdaptivePanel UseLayoutRounding="False">
         <Panel Background="Red"/>
         <Panel Background="Green"/>
@@ -18,18 +17,16 @@
         <Panel Background="Yellow"/>
         <Panel Background="Black"/>
     </local:AdaptivePanel>
-    -->
 
+    <!--
     <local:AdaptiveGrid UseLayoutRounding="False" ShowGridLines="True">
-        
         <Panel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Red"/>
         <Panel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Green"/>
         <Panel Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Blue"/>
-        
         <Panel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Yellow"/>
         <Panel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Background="Black"/>
-        
     </local:AdaptiveGrid> 
+    -->
 
     <!--
     <TabControl>
