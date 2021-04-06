@@ -9,8 +9,9 @@
         UseLayoutRounding="True"
         Width="700" Height="500"
         Title="{Binding $self.Bounds, StringFormat={}LayoutDemo {0}}">
- 
+
     <Grid RowDefinitions="Auto,*">
+
         <local:AdaptivePanel Grid.Row="0" 
                              AspectRatio="0.5"
                              Columns="1, 2, 3"
@@ -23,6 +24,17 @@
             <Border CornerRadius="4" Margin="4" Background="Yellow" local:AdaptivePanel.ColumnSpan="1, 1, 1" local:AdaptivePanel.RowSpan="1, 1, 2" />
             <Border CornerRadius="4" Margin="4" Background="Black" local:AdaptivePanel.ColumnSpan="1, 2, 2" local:AdaptivePanel.RowSpan="1, 2, 2"/>
         </local:AdaptivePanel>
+
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn CanUserSort="False" Header="Date"/>
+                <DataGridTextColumn CanUserSort="False" Header="Description"/>
+                <DataGridTextColumn CanUserSort="False" Header="Outgoing"/>
+                <DataGridTextColumn CanUserSort="False" Header="Incoming"/>
+                <DataGridTextColumn CanUserSort="False" Header="Status"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 
     <!--
