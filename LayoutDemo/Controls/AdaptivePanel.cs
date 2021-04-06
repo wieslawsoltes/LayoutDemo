@@ -213,6 +213,7 @@ namespace LayoutDemo
         {
             var measureSize = MeasureArrange(availableSize, true);
             // return new Size(availableSize.Width, availableSize.Height);
+            // Console.WriteLine($"MeasureOverride: {measureSize}");
             return measureSize;
         }
 
