@@ -1,97 +1,10 @@
 ﻿using System;
-using System.Globalization;
 using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 
 namespace LayoutDemo
 {
-    public class AdaptiveGrid : Grid
-    {
-        private string D2S(double value)
-        {
-            return value.ToString(CultureInfo.InvariantCulture);
-        }
-        
-        public AdaptiveGrid()
-        {
-            this.GetObservable(BoundsProperty).Subscribe(x => Init(x));
-        }
-
-        private void SetRowDefinitions(RowDefinitions rowDefinitions)
-        {
-            RowDefinitions.Clear();
-
-            foreach (var rowDefinition in rowDefinitions)
-            {
-                RowDefinitions.Add(rowDefinition);
-            }
-        }
-        
-        private void SetColumnDefinitions(ColumnDefinitions columnDefinitions)
-        {
-            ColumnDefinitions.Clear();
-
-            foreach (var columnDefinition in columnDefinitions)
-            {
-                ColumnDefinitions.Add(columnDefinition);
-            }
-        }
-
-        private void Init(Rect rect)
-        {
-            Console.WriteLine($"Size {rect.Size}");
-            if (rect.Size.Width <= 0)
-            {
-                Console.WriteLine($"ColumnDefinitions {ColumnDefinitions}");
-                Console.WriteLine($"RowDefinitions {RowDefinitions}");
-                return;
-            }
-
-            double twoColumnsTriggerWidth = 500;
-            double aspectRatio = 0.5;
-
-            if (rect.Size.Width < twoColumnsTriggerWidth)
-            {
-                var columnDefinitionsStr = "1*,1*";
-                
-                var columnWidth = rect.Size.Width / 2;
-                var itemHeight = columnWidth * aspectRatio;
-                var rowDefinitionsStr = $"{D2S(itemHeight)},{D2S(itemHeight)}";
-                
-                ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
-                RowDefinitions = RowDefinitions.Parse(rowDefinitionsStr);
-                //var columnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
-                //var rowDefinitions = RowDefinitions.Parse(rowDefinitionsStr);
-                //SetColumnDefinitions(columnDefinitions);
-                //SetRowDefinitions(rowDefinitions);
-                //InvalidateMeasure();
-                
-                Console.WriteLine($"ColumnDefinitions {columnDefinitionsStr}");
-                Console.WriteLine($"RowDefinitions {rowDefinitionsStr}");
-            }
-            else
-            {
-                var columnDefinitionsStr = "1*,1*,1*";
-                
-                var columnWidth = rect.Size.Width / 3;
-                var itemHeight = columnWidth * aspectRatio;
-                var rowDefinitionsStr = $"{D2S(itemHeight)},{D2S(itemHeight)}";
-                
-                ColumnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
-                RowDefinitions = RowDefinitions.Parse(rowDefinitionsStr);
-                //var columnDefinitions = ColumnDefinitions.Parse(columnDefinitionsStr);
-                //var rowDefinitions = RowDefinitions.Parse(rowDefinitionsStr);
-                //SetColumnDefinitions(columnDefinitions);
-                //SetRowDefinitions(rowDefinitions);
-                //InvalidateMeasure();
-                
-                Console.WriteLine($"ColumnDefinitions {columnDefinitionsStr}");
-                Console.WriteLine($"RowDefinitions {rowDefinitionsStr}");
-            }
-        }
-    }
-
     public class AdaptivePanel : Panel
     {
         public static readonly StyledProperty<double> AspectRatioProperty =
@@ -109,25 +22,25 @@ namespace LayoutDemo
         public static readonly AttachedProperty<AvaloniaList<int>> RowSpanProperty =
             AvaloniaProperty.RegisterAttached<AdaptivePanel, Control, AvaloniaList<int>>("RowSpan", new AvaloniaList<int>() { 1 });
 
-        public static AvaloniaList<int> GetColumnSpan(Control element)
+        public static AvaloniaList<int> GetColumnSpan(Control? element)
         {
             Contract.Requires<ArgumentNullException>(element != null);
             return element!.GetValue(ColumnSpanProperty);
         }
 
-        public static void SetColumnSpan(Control element, AvaloniaList<int> value)
+        public static void SetColumnSpan(Control? element, AvaloniaList<int> value)
         {
             Contract.Requires<ArgumentNullException>(element != null);
             element!.SetValue(ColumnSpanProperty, value);
         }
 
-        public static AvaloniaList<int> GetRowSpan(Control element)
+        public static AvaloniaList<int> GetRowSpan(Control? element)
         {
             Contract.Requires<ArgumentNullException>(element != null);
             return element!.GetValue(RowSpanProperty);
         }
 
-        public static void SetRowSpan(Control element, AvaloniaList<int> value)
+        public static void SetRowSpan(Control? element, AvaloniaList<int> value)
         {
             Contract.Requires<ArgumentNullException>(element != null);
             element!.SetValue(RowSpanProperty, value);
@@ -219,8 +132,9 @@ namespace LayoutDemo
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            MeasureArrange(finalSize, false);
-            return finalSize;
+            var arrangeSize = MeasureArrange(finalSize, false);
+            // return finalSize;
+            return arrangeSize;
         }
     }
 }
