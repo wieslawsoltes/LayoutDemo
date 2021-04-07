@@ -93,12 +93,10 @@ namespace LayoutDemo
                 {
                     aspectRatio = 1.0;
                 }
-                else
-                {
-                    var min = Math.Min(height, width);
-                    var max = Math.Max(height, width);
-                    aspectRatio = min / max;
-                }
+                // else
+                // {
+                //     aspectRatio = Math.Min(height, width) / Math.Max(height, width);
+                // }
             }
 
             var totalColumns = 1;
@@ -147,7 +145,7 @@ namespace LayoutDemo
             }
 
             var itemWidth = width / totalColumns;
-            var itemHeight = itemWidth * aspectRatio;
+            var itemHeight = double.IsNaN(aspectRatio) ? height/ totalRows : itemWidth * aspectRatio;
 
             for (var index = 0; index < children.Count; index++)
             {
