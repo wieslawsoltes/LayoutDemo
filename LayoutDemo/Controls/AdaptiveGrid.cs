@@ -26,7 +26,7 @@ namespace LayoutDemo
                 RowDefinitions.Add(rowDefinition);
             }
         }
-        
+
         private void SetColumnDefinitions(ColumnDefinitions columnDefinitions)
         {
             ColumnDefinitions.Clear();
@@ -53,7 +53,7 @@ namespace LayoutDemo
             if (rect.Size.Width < twoColumnsTriggerWidth)
             {
                 var columnDefinitionsStr = "1*,1*";
-                
+
                 var columnWidth = rect.Size.Width / 2;
                 var itemHeight = columnWidth * aspectRatio;
                 var rowDefinitionsStr = $"{ToString(itemHeight)},{ToString(itemHeight)}";
