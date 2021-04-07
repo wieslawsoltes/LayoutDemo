@@ -72,62 +72,87 @@ namespace LayoutDemo
             AffectsArrange<AdaptivePanel>(AspectRatioProperty, ColumnsProperty, TriggersProperty, ColumnSpanProperty, RowSpanProperty);
         }
 
+        struct Item
+        {
+            public int Column;
+            public int Row;
+            public int ColumnSpan;
+            public int RowSpan;
+        }
+        
         private Size MeasureArrange(Size panelSize, bool isMeasure)
         {
             var aspectRatio = AspectRatio;
-            var columnsNum = 1;
-            var layoutId = 0;
+            var width = panelSize.Width;
+            var height = panelSize.Height;
 
             if (double.IsNaN(aspectRatio))
             {
-                if (panelSize.Height == 0 || double.IsInfinity(panelSize.Height))
+                if (height == 0 || double.IsInfinity(height))
                 {
                     aspectRatio = 1.0;
                 }
                 else
                 {
-                    var min = Math.Min(panelSize.Height, panelSize.Width);
-                    var max = Math.Max(panelSize.Height, panelSize.Width);
+                    var min = Math.Min(height, width);
+                    var max = Math.Max(height, width);
                     aspectRatio = min / max;
                 }
             }
+            var totalColumns = 1;
+            var layoutId = 0;
 
             for (var i = 0; i < Triggers.Count; i++)
             {
                 var trigger = Triggers[i];
                 var columns = Columns[i];
 
-                if (panelSize.Width > trigger)
+                if (width > trigger)
                 {
-                    columnsNum = columns;
+                    totalColumns = columns;
                     layoutId = i;
                 }
             }
 
-            var columnWidth = panelSize.Width / columnsNum;
-            var itemHeight = columnWidth * aspectRatio;
-            var column = 0;
-            var row = 0;
+            var currentColumn = 0;
+            var totalRows = 0;
             var rowIncrement = 1;
+            var items = new Item[Children.Count];
 
             for (var index = 0; index < Children.Count; index++)
             {
                 var element = Children[index];
                 var columnSpan = GetColumnSpan((Control) element)[layoutId];
                 var rowSpan = GetRowSpan((Control) element)[layoutId];
-                var position = new Point(column * columnWidth, row * itemHeight);
-                var size = new Size(columnWidth * columnSpan, itemHeight * rowSpan);
-                var rect = new Rect(position, size);
+
+                items[index] = new Item()
+                {
+                    Column = currentColumn,
+                    Row = totalRows,
+                    ColumnSpan = columnSpan,
+                    RowSpan = rowSpan
+                };
 
                 rowIncrement = Math.Max(rowSpan, rowIncrement);
-                column += columnSpan;
+                currentColumn += columnSpan;
 
-                if (column >= columnsNum)
+                if (currentColumn >= totalColumns)
                 {
-                    column = 0;
-                    row += rowIncrement;
+                    currentColumn = 0;
+                    totalRows += rowIncrement;
                     rowIncrement = 1;
                 }
+            }
+
+            var columnWidth = width / totalColumns;
+            var itemHeight = columnWidth * aspectRatio;
+
+            for (var index = 0; index < Children.Count; index++)
+            {
+                var element = Children[index];
+                var size = new Size(columnWidth * items[index].ColumnSpan, itemHeight * items[index].RowSpan);
+                var position = new Point(items[index].Column * columnWidth, items[index].Row * itemHeight);
+                var rect = new Rect(position, size);
 
                 if (isMeasure)
                 {
@@ -139,7 +164,7 @@ namespace LayoutDemo
                 }
             }
 
-            return new Size(panelSize.Width, itemHeight * row);
+            return new Size(width, itemHeight * totalRows);
         }
 
         protected override Size MeasureOverride(Size availableSize)
