@@ -144,14 +144,14 @@ namespace LayoutDemo
                 }
             }
 
-            var columnWidth = width / totalColumns;
-            var itemHeight = columnWidth * aspectRatio;
+            var itemWidth = width / totalColumns;
+            var itemHeight = itemWidth * aspectRatio;
 
             for (var index = 0; index < Children.Count; index++)
             {
                 var element = Children[index];
-                var size = new Size(columnWidth * items[index].ColumnSpan, itemHeight * items[index].RowSpan);
-                var position = new Point(items[index].Column * columnWidth, items[index].Row * itemHeight);
+                var size = new Size(itemWidth * items[index].ColumnSpan, itemHeight * items[index].RowSpan);
+                var position = new Point(items[index].Column * itemWidth, items[index].Row * itemHeight);
                 var rect = new Rect(position, size);
 
                 if (isMeasure)
