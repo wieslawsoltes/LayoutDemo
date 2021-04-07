@@ -72,16 +72,17 @@ namespace LayoutDemo
             AffectsArrange<AdaptivePanel>(AspectRatioProperty, ColumnsProperty, TriggersProperty, ColumnSpanProperty, RowSpanProperty);
         }
 
-        struct Item
+        private struct Item
         {
             public int Column;
             public int Row;
             public int ColumnSpan;
             public int RowSpan;
         }
-        
+
         private Size MeasureArrange(Size panelSize, bool isMeasure)
         {
+            var children = Children;
             var aspectRatio = AspectRatio;
             var width = panelSize.Width;
             var height = panelSize.Height;
@@ -99,8 +100,9 @@ namespace LayoutDemo
                     aspectRatio = min / max;
                 }
             }
+
             var totalColumns = 1;
-            var layoutId = 0;
+            var layoutIndex = 0;
 
             for (var i = 0; i < Triggers.Count; i++)
             {
@@ -110,20 +112,20 @@ namespace LayoutDemo
                 if (width > trigger)
                 {
                     totalColumns = columns;
-                    layoutId = i;
+                    layoutIndex = i;
                 }
             }
 
             var currentColumn = 0;
             var totalRows = 0;
             var rowIncrement = 1;
-            var items = new Item[Children.Count];
+            var items = new Item[children.Count];
 
-            for (var index = 0; index < Children.Count; index++)
+            for (var index = 0; index < children.Count; index++)
             {
-                var element = Children[index];
-                var columnSpan = GetColumnSpan((Control) element)[layoutId];
-                var rowSpan = GetRowSpan((Control) element)[layoutId];
+                var element = children[index];
+                var columnSpan = GetColumnSpan((Control) element)[layoutIndex];
+                var rowSpan = GetRowSpan((Control) element)[layoutIndex];
 
                 items[index] = new Item()
                 {
@@ -147,9 +149,9 @@ namespace LayoutDemo
             var itemWidth = width / totalColumns;
             var itemHeight = itemWidth * aspectRatio;
 
-            for (var index = 0; index < Children.Count; index++)
+            for (var index = 0; index < children.Count; index++)
             {
-                var element = Children[index];
+                var element = children[index];
                 var size = new Size(itemWidth * items[index].ColumnSpan, itemHeight * items[index].RowSpan);
                 var position = new Point(items[index].Column * itemWidth, items[index].Row * itemHeight);
                 var rect = new Rect(position, size);
