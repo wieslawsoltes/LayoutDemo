@@ -2,17 +2,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:LayoutDemo"
+             xmlns:c="clr-namespace:LayoutDemo.Controls"
              mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="400"
              x:Class="LayoutDemo.Views.WeightedPanelView">
     <Grid ColumnDefinitions="*,*">
-        <local:WeightedPanel Grid.Column="1" Orientation="Vertical" Margin="8">
-            <Panel Background="Red" local:WeightedPanel.Weight="6"/>
-            <Panel Background="Green" local:WeightedPanel.Weight="4"/>
-        </local:WeightedPanel>
-        <local:WeightedPanel Grid.Column="0" Orientation="Horizontal" Margin="8">
-            <Panel Background="Red" local:WeightedPanel.Weight="6"/>
-            <Panel Background="Green" local:WeightedPanel.Weight="4"/>
-        </local:WeightedPanel>
+        <c:WeightedPanel Grid.Column="1" Orientation="Vertical" Margin="8">
+            <Panel Background="Red" c:WeightedPanel.Weight="6"/>
+            <Panel Background="Green" c:WeightedPanel.Weight="4"/>
+        </c:WeightedPanel>
+        <c:WeightedPanel Grid.Column="0" Orientation="Horizontal" Margin="8">
+            <Panel Background="Red" c:WeightedPanel.Weight="6"/>
+            <Panel Background="Green" c:WeightedPanel.Weight="4"/>
+        </c:WeightedPanel>
     </Grid>
 </UserControl>

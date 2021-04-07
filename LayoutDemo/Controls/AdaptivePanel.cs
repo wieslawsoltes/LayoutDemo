@@ -3,7 +3,7 @@ using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 
-namespace LayoutDemo
+namespace LayoutDemo.Controls
 {
     public class AdaptivePanel : Panel
     {

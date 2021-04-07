@@ -2,7 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Layout;
 
-namespace LayoutDemo
+namespace LayoutDemo.Controls
 {
     public class WeightedPanel : Panel
     {

@@ -3,7 +3,7 @@ using System.Globalization;
 using Avalonia;
 using Avalonia.Controls;
 
-namespace LayoutDemo
+namespace LayoutDemo.Controls
 {
     public class AdaptiveGrid : Grid
     {
