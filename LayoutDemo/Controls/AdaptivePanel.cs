@@ -64,6 +64,14 @@ namespace LayoutDemo
             set => SetValue(TriggersProperty, value);
         }
 
+        static AdaptivePanel()
+        {
+            AffectsParentMeasure<AdaptivePanel>(AspectRatioProperty, ColumnsProperty, TriggersProperty, ColumnSpanProperty, RowSpanProperty);
+            AffectsParentArrange<AdaptivePanel>(AspectRatioProperty, ColumnsProperty, TriggersProperty, ColumnSpanProperty, RowSpanProperty);
+            AffectsMeasure<AdaptivePanel>(AspectRatioProperty, ColumnsProperty, TriggersProperty, ColumnSpanProperty, RowSpanProperty);
+            AffectsArrange<AdaptivePanel>(AspectRatioProperty, ColumnsProperty, TriggersProperty, ColumnSpanProperty, RowSpanProperty);
+        }
+        
         private Size MeasureArrange(Size panelSize, bool isMeasure)
         {
             double aspectRatio = AspectRatio;
