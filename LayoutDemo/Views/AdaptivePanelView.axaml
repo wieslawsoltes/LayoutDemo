@@ -10,11 +10,14 @@
        
         <Label Content="Test Wallet" Margin="12" DockPanel.Dock="Top"/>
 
-        <Grid RowDefinitions="Auto,*">
+        <!-- For adaptive height set RowDefinitions="Auto,*" and AspectRatio="0.5" -->
+        <!-- For fixed height set RowDefinitions="400,*" and AspectRatio="NaN" -->
+
+        <Grid RowDefinitions="400,*">
 
             <local:AdaptivePanel Grid.Row="0" 
                                  Margin="12,0,12,0"
-                                 AspectRatio="0.5"
+                                 AspectRatio="NaN"
                                  Columns="1, 2, 3"
                                  Triggers="150, 300, 500"
                                  UseLayoutRounding="False" 
