@@ -89,6 +89,21 @@ namespace LayoutDemo
             var width = panelSize.Width;
             var height = panelSize.Height;
 
+            if (widthTriggers.Count <= 0)
+            {
+                throw new Exception($"No width trigger specified in {nameof(WidthTriggers)} property.");
+            }
+
+            if (columnHints.Count <= 0)
+            {
+                throw new Exception($"No column hints specified in {nameof(ColumnHints)} property.");
+            }
+
+            if (widthTriggers.Count != columnHints.Count)
+            {
+                throw new Exception($"Number of width triggers must be equal to the number of column triggers.");
+            }
+
             if (double.IsNaN(aspectRatio))
             {
                 if (height == 0 || double.IsInfinity(height))
