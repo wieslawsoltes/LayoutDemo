@@ -18,8 +18,8 @@
             <local:AdaptivePanel Grid.Row="0" 
                                  Margin="12,0,12,0"
                                  AspectRatio="NaN"
-                                 Columns="1, 2, 3"
-                                 Triggers="150, 300, 500"
+                                 ColumnHints="1, 2, 3"
+                                 WidthTriggers="150, 300, 500"
                                  UseLayoutRounding="False" 
                                  Background="LightGray">
                 <Border CornerRadius="4" Margin="4" Background="Red" ToolTip.Tip="{Binding $self.Bounds.Size}" local:AdaptivePanel.ColumnSpan="1, 1, 1" local:AdaptivePanel.RowSpan="1, 1, 1" />

@@ -10,11 +10,11 @@ namespace LayoutDemo
         public static readonly StyledProperty<double> AspectRatioProperty =
             AvaloniaProperty.Register<AdaptivePanel, double>(nameof(AspectRatio), double.NaN);
 
-        public static readonly StyledProperty<AvaloniaList<int>> ColumnsProperty =
-            AvaloniaProperty.Register<AdaptivePanel, AvaloniaList<int>>(nameof(Columns), new AvaloniaList<int>() { 1 });
+        public static readonly StyledProperty<AvaloniaList<int>> ColumnHintsProperty =
+            AvaloniaProperty.Register<AdaptivePanel, AvaloniaList<int>>(nameof(ColumnHints), new AvaloniaList<int>() { 1 });
 
-        public static readonly StyledProperty<AvaloniaList<double>> TriggersProperty =
-            AvaloniaProperty.Register<AdaptivePanel, AvaloniaList<double>>(nameof(Triggers), new AvaloniaList<double>() { 0.0 });
+        public static readonly StyledProperty<AvaloniaList<double>> WidthTriggersProperty =
+            AvaloniaProperty.Register<AdaptivePanel, AvaloniaList<double>>(nameof(WidthTriggers), new AvaloniaList<double>() { 0.0 });
 
         public static readonly AttachedProperty<AvaloniaList<int>> ColumnSpanProperty =
             AvaloniaProperty.RegisterAttached<AdaptivePanel, Control, AvaloniaList<int>>("ColumnSpan", new AvaloniaList<int>() { 1 });
@@ -52,24 +52,24 @@ namespace LayoutDemo
             set => SetValue(AspectRatioProperty, value);
         }
 
-        public AvaloniaList<int> Columns
+        public AvaloniaList<int> ColumnHints
         {
-            get => GetValue(ColumnsProperty);
-            set => SetValue(ColumnsProperty, value);
+            get => GetValue(ColumnHintsProperty);
+            set => SetValue(ColumnHintsProperty, value);
         }
 
-        public AvaloniaList<double> Triggers
+        public AvaloniaList<double> WidthTriggers
         {
-            get => GetValue(TriggersProperty);
-            set => SetValue(TriggersProperty, value);
+            get => GetValue(WidthTriggersProperty);
+            set => SetValue(WidthTriggersProperty, value);
         }
 
         static AdaptivePanel()
         {
-            AffectsParentMeasure<AdaptivePanel>(AspectRatioProperty, ColumnsProperty, TriggersProperty, ColumnSpanProperty, RowSpanProperty);
-            AffectsParentArrange<AdaptivePanel>(AspectRatioProperty, ColumnsProperty, TriggersProperty, ColumnSpanProperty, RowSpanProperty);
-            AffectsMeasure<AdaptivePanel>(AspectRatioProperty, ColumnsProperty, TriggersProperty, ColumnSpanProperty, RowSpanProperty);
-            AffectsArrange<AdaptivePanel>(AspectRatioProperty, ColumnsProperty, TriggersProperty, ColumnSpanProperty, RowSpanProperty);
+            AffectsParentMeasure<AdaptivePanel>(AspectRatioProperty, ColumnHintsProperty, WidthTriggersProperty, ColumnSpanProperty, RowSpanProperty);
+            AffectsParentArrange<AdaptivePanel>(AspectRatioProperty, ColumnHintsProperty, WidthTriggersProperty, ColumnSpanProperty, RowSpanProperty);
+            AffectsMeasure<AdaptivePanel>(AspectRatioProperty, ColumnHintsProperty, WidthTriggersProperty, ColumnSpanProperty, RowSpanProperty);
+            AffectsArrange<AdaptivePanel>(AspectRatioProperty, ColumnHintsProperty, WidthTriggersProperty, ColumnSpanProperty, RowSpanProperty);
         }
 
         private struct Item
@@ -83,8 +83,8 @@ namespace LayoutDemo
         private Size MeasureArrange(Size panelSize, bool isMeasure)
         {
             var children = Children;
-            var triggers = Triggers;
-            var columns = Columns;
+            var widthTriggers = WidthTriggers;
+            var columnHints = ColumnHints;
             var aspectRatio = AspectRatio;
             var width = panelSize.Width;
             var height = panelSize.Height;
@@ -104,11 +104,11 @@ namespace LayoutDemo
             var totalColumns = 1;
             var layoutIndex = 0;
 
-            for (var i = 0; i < triggers.Count; i++)
+            for (var i = 0; i < widthTriggers.Count; i++)
             {
-                if (width > triggers[i])
+                if (width > widthTriggers[i])
                 {
-                    totalColumns = columns[i];
+                    totalColumns = columnHints[i];
                     layoutIndex = i;
                 }
             }
