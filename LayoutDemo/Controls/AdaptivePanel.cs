@@ -83,6 +83,8 @@ namespace LayoutDemo
         private Size MeasureArrange(Size panelSize, bool isMeasure)
         {
             var children = Children;
+            var triggers = Triggers;
+            var columns = Columns;
             var aspectRatio = AspectRatio;
             var width = panelSize.Width;
             var height = panelSize.Height;
@@ -102,14 +104,11 @@ namespace LayoutDemo
             var totalColumns = 1;
             var layoutIndex = 0;
 
-            for (var i = 0; i < Triggers.Count; i++)
+            for (var i = 0; i < triggers.Count; i++)
             {
-                var trigger = Triggers[i];
-                var columns = Columns[i];
-
-                if (width > trigger)
+                if (width > triggers[i])
                 {
-                    totalColumns = columns;
+                    totalColumns = columns[i];
                     layoutIndex = i;
                 }
             }
@@ -119,13 +118,13 @@ namespace LayoutDemo
             var rowIncrement = 1;
             var items = new Item[children.Count];
 
-            for (var index = 0; index < children.Count; index++)
+            for (var i = 0; i < children.Count; i++)
             {
-                var element = children[index];
+                var element = children[i];
                 var columnSpan = GetColumnSpan((Control) element)[layoutIndex];
                 var rowSpan = GetRowSpan((Control) element)[layoutIndex];
 
-                items[index] = new Item()
+                items[i] = new Item()
                 {
                     Column = currentColumn,
                     Row = totalRows,
@@ -147,11 +146,11 @@ namespace LayoutDemo
             var itemWidth = width / totalColumns;
             var itemHeight = double.IsNaN(aspectRatio) ? height/ totalRows : itemWidth * aspectRatio;
 
-            for (var index = 0; index < children.Count; index++)
+            for (var i = 0; i < children.Count; i++)
             {
-                var element = children[index];
-                var size = new Size(itemWidth * items[index].ColumnSpan, itemHeight * items[index].RowSpan);
-                var position = new Point(items[index].Column * itemWidth, items[index].Row * itemHeight);
+                var element = children[i];
+                var size = new Size(itemWidth * items[i].ColumnSpan, itemHeight * items[i].RowSpan);
+                var position = new Point(items[i].Column * itemWidth, items[i].Row * itemHeight);
                 var rect = new Rect(position, size);
 
                 if (isMeasure)
