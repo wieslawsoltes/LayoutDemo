@@ -71,7 +71,7 @@ namespace LayoutDemo
             AffectsMeasure<AdaptivePanel>(AspectRatioProperty, ColumnsProperty, TriggersProperty, ColumnSpanProperty, RowSpanProperty);
             AffectsArrange<AdaptivePanel>(AspectRatioProperty, ColumnsProperty, TriggersProperty, ColumnSpanProperty, RowSpanProperty);
         }
-        
+
         private Size MeasureArrange(Size panelSize, bool isMeasure)
         {
             var aspectRatio = AspectRatio;
@@ -127,7 +127,7 @@ namespace LayoutDemo
 
             return new Size(panelSize.Width, itemHeight * row);
         }
- 
+
         protected override Size MeasureOverride(Size availableSize)
         {
             var measureSize = MeasureArrange(availableSize, true);
