@@ -10,7 +10,7 @@
         Width="732" Height="650"
         Title="{Binding $self.Bounds, StringFormat={}LayoutDemo {0}}">
     <!-- <views:AdaptiveGridView/> -->
-    <views:AdaptivePanelView/>
+    <views:ResponsivePanelView/>
     <!-- <views:VanishingPointPanelView/> -->
     <!-- <views:WeightedPanelView/> -->
 </Window>

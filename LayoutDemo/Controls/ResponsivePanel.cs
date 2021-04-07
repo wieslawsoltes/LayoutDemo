@@ -5,22 +5,22 @@ using Avalonia.Controls;
 
 namespace LayoutDemo.Controls
 {
-    public class AdaptivePanel : Panel
+    public class ResponsivePanel : Panel
     {
         public static readonly StyledProperty<double> AspectRatioProperty =
-            AvaloniaProperty.Register<AdaptivePanel, double>(nameof(AspectRatio), double.NaN);
+            AvaloniaProperty.Register<ResponsivePanel, double>(nameof(AspectRatio), double.NaN);
 
         public static readonly StyledProperty<AvaloniaList<int>> ColumnHintsProperty =
-            AvaloniaProperty.Register<AdaptivePanel, AvaloniaList<int>>(nameof(ColumnHints), new AvaloniaList<int>() { 1 });
+            AvaloniaProperty.Register<ResponsivePanel, AvaloniaList<int>>(nameof(ColumnHints), new AvaloniaList<int>() { 1 });
 
         public static readonly StyledProperty<AvaloniaList<double>> WidthTriggersProperty =
-            AvaloniaProperty.Register<AdaptivePanel, AvaloniaList<double>>(nameof(WidthTriggers), new AvaloniaList<double>() { 0.0 });
+            AvaloniaProperty.Register<ResponsivePanel, AvaloniaList<double>>(nameof(WidthTriggers), new AvaloniaList<double>() { 0.0 });
 
         public static readonly AttachedProperty<AvaloniaList<int>> ColumnSpanProperty =
-            AvaloniaProperty.RegisterAttached<AdaptivePanel, Control, AvaloniaList<int>>("ColumnSpan", new AvaloniaList<int>() { 1 });
+            AvaloniaProperty.RegisterAttached<ResponsivePanel, Control, AvaloniaList<int>>("ColumnSpan", new AvaloniaList<int>() { 1 });
 
         public static readonly AttachedProperty<AvaloniaList<int>> RowSpanProperty =
-            AvaloniaProperty.RegisterAttached<AdaptivePanel, Control, AvaloniaList<int>>("RowSpan", new AvaloniaList<int>() { 1 });
+            AvaloniaProperty.RegisterAttached<ResponsivePanel, Control, AvaloniaList<int>>("RowSpan", new AvaloniaList<int>() { 1 });
 
         public static AvaloniaList<int> GetColumnSpan(Control? element)
         {
@@ -64,12 +64,12 @@ namespace LayoutDemo.Controls
             set => SetValue(WidthTriggersProperty, value);
         }
 
-        static AdaptivePanel()
+        static ResponsivePanel()
         {
-            AffectsParentMeasure<AdaptivePanel>(AspectRatioProperty, ColumnHintsProperty, WidthTriggersProperty, ColumnSpanProperty, RowSpanProperty);
-            AffectsParentArrange<AdaptivePanel>(AspectRatioProperty, ColumnHintsProperty, WidthTriggersProperty, ColumnSpanProperty, RowSpanProperty);
-            AffectsMeasure<AdaptivePanel>(AspectRatioProperty, ColumnHintsProperty, WidthTriggersProperty, ColumnSpanProperty, RowSpanProperty);
-            AffectsArrange<AdaptivePanel>(AspectRatioProperty, ColumnHintsProperty, WidthTriggersProperty, ColumnSpanProperty, RowSpanProperty);
+            AffectsParentMeasure<ResponsivePanel>(AspectRatioProperty, ColumnHintsProperty, WidthTriggersProperty, ColumnSpanProperty, RowSpanProperty);
+            AffectsParentArrange<ResponsivePanel>(AspectRatioProperty, ColumnHintsProperty, WidthTriggersProperty, ColumnSpanProperty, RowSpanProperty);
+            AffectsMeasure<ResponsivePanel>(AspectRatioProperty, ColumnHintsProperty, WidthTriggersProperty, ColumnSpanProperty, RowSpanProperty);
+            AffectsArrange<ResponsivePanel>(AspectRatioProperty, ColumnHintsProperty, WidthTriggersProperty, ColumnSpanProperty, RowSpanProperty);
         }
 
         private struct Item
