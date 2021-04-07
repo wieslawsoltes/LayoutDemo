@@ -12,5 +12,6 @@
     <!-- <views:AdaptiveGridView/> -->
     <views:ResponsivePanelView/>
     <!-- <views:VanishingPointPanelView/> -->
+    <!-- <views:VariableSizedGridPanelView/> -->
     <!-- <views:WeightedPanelView/> -->
 </Window>
