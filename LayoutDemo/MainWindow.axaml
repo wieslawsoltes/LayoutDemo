@@ -31,9 +31,7 @@
             </local:AdaptivePanel>
 
             <DockPanel Grid.Row="1">
-
                 <Label Content="Transaction History" Margin="12" DockPanel.Dock="Top"/>
-                
                 <DataGrid  AutoGenerateColumns="False" Margin="12,0,12,12">
                     <DataGrid.Columns>
                         <DataGridTextColumn CanUserSort="False" Header="Date"/>
@@ -43,7 +41,6 @@
                         <DataGridTextColumn CanUserSort="False" Header="Status"/>
                     </DataGrid.Columns>
                 </DataGrid>
-
             </DockPanel>
                 
         </Grid>
