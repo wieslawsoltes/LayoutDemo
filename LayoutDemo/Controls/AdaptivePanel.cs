@@ -74,12 +74,11 @@ namespace LayoutDemo
         
         private Size MeasureArrange(Size panelSize, bool isMeasure)
         {
-            double aspectRatio = AspectRatio;
-
+            var aspectRatio = AspectRatio;
             var columnsNum = 1;
             var layoutId = 0;
 
-            for (int i = 0; i < Triggers.Count; i++)
+            for (var i = 0; i < Triggers.Count; i++)
             {
                 var trigger = Triggers[i];
                 var columns = Columns[i];
@@ -93,23 +92,22 @@ namespace LayoutDemo
 
             var columnWidth = panelSize.Width / columnsNum;
             var itemHeight = columnWidth * aspectRatio;
-            int column = 0;
-            int row = 0;
-            int rowIncrement = 1;
+            var column = 0;
+            var row = 0;
+            var rowIncrement = 1;
 
-            for (int index = 0; index < Children.Count; index++)
+            for (var index = 0; index < Children.Count; index++)
             {
                 var element = Children[index];
                 var columnSpan = GetColumnSpan((Control) element)[layoutId];
                 var rowSpan = GetRowSpan((Control) element)[layoutId];
-
                 var position = new Point(column * columnWidth, row * itemHeight);
                 var size = new Size(columnWidth * columnSpan, itemHeight * rowSpan);
                 var rect = new Rect(position, size);
 
                 rowIncrement = Math.Max(rowSpan, rowIncrement);
-
                 column += columnSpan;
+
                 if (column >= columnsNum)
                 {
                     column = 0;
