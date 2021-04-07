@@ -1,0 +1,19 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:LayoutDemo.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LayoutDemo.Views.VariableSizedGridPanelView">
+    <c:VariableSizedGridPanel Orientation="Vertical"
+                              MaximumRowsOrColumns="4"
+                              AspectRatio="0.5"
+                              UseLayoutRounding="False" 
+                              Background="LightGray">
+        <Border CornerRadius="4" Margin="4" Background="Red" ToolTip.Tip="{Binding $self.Bounds.Size}" />
+        <Border CornerRadius="4" Margin="4" Background="Green" ToolTip.Tip="{Binding $self.Bounds.Size}" />
+        <Border CornerRadius="4" Margin="4" Background="Blue" ToolTip.Tip="{Binding $self.Bounds.Size}" />
+        <Border CornerRadius="4" Margin="4" Background="Yellow" ToolTip.Tip="{Binding $self.Bounds.Size}" />
+        <Border CornerRadius="4" Margin="4" Background="Black" ToolTip.Tip="{Binding $self.Bounds.Size}" />
+    </c:VariableSizedGridPanel>
+</UserControl>
