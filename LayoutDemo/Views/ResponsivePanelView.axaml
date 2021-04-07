@@ -8,7 +8,7 @@
 
     <DockPanel>
 
-        <Label Content="Test Wallet" Margin="24" DockPanel.Dock="Top"/>
+        <Label Content="Test Wallet" Margin="12" FontSize="24" DockPanel.Dock="Top"/>
 
         <!-- For adaptive height set RowDefinitions="Auto,*" and AspectRatio="0.5" -->
         <!-- For fixed height set RowDefinitions="350,*" and AspectRatio="NaN" -->
@@ -30,7 +30,7 @@
             </c:ResponsivePanel>
 
             <DockPanel Grid.Row="1">
-                <Label Content="Transaction History" Margin="16" DockPanel.Dock="Top"/>
+                <Label Content="Transaction History" Margin="12" FontSize="16" DockPanel.Dock="Top"/>
                 <DataGrid  AutoGenerateColumns="False" Margin="12,0,12,12">
                     <DataGrid.Columns>
                         <DataGridTextColumn CanUserSort="False" Header="Date"/>
