@@ -3,11 +3,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:LayoutDemo.Views"
-        mc:Ignorable="d" d:DesignWidth="550" d:DesignHeight="500"
+        mc:Ignorable="d" d:DesignWidth="732" d:DesignHeight="650"
         x:Class="LayoutDemo.MainWindow"
         WindowStartupLocation="CenterScreen"
         UseLayoutRounding="True"
-        Width="700" Height="500"
+        Width="732" Height="650"
         Title="{Binding $self.Bounds, StringFormat={}LayoutDemo {0}}">
     <!-- <views:AdaptiveGridView/> -->
     <views:AdaptivePanelView/>
