@@ -8,7 +8,7 @@ namespace LayoutDemo
     public class AdaptivePanel : Panel
     {
         public static readonly StyledProperty<double> AspectRatioProperty =
-            AvaloniaProperty.Register<AdaptivePanel, double>(nameof(AspectRatio), 0.5);
+            AvaloniaProperty.Register<AdaptivePanel, double>(nameof(AspectRatio), double.NaN);
 
         public static readonly StyledProperty<AvaloniaList<int>> ColumnsProperty =
             AvaloniaProperty.Register<AdaptivePanel, AvaloniaList<int>>(nameof(Columns), new AvaloniaList<int>() { 1 });
@@ -77,6 +77,20 @@ namespace LayoutDemo
             var aspectRatio = AspectRatio;
             var columnsNum = 1;
             var layoutId = 0;
+
+            if (double.IsNaN(aspectRatio))
+            {
+                if (panelSize.Height == 0 || double.IsInfinity(panelSize.Height))
+                {
+                    aspectRatio = 1.0;
+                }
+                else
+                {
+                    var min = Math.Min(panelSize.Height, panelSize.Width);
+                    var max = Math.Max(panelSize.Height, panelSize.Width);
+                    aspectRatio = min / max;
+                }
+            }
 
             for (var i = 0; i < Triggers.Count; i++)
             {
