@@ -7,7 +7,7 @@
              x:Class="LayoutDemo.Views.ResponsivePanelView">
 
     <DockPanel>
-       
+
         <Label Content="Test Wallet" Margin="24" DockPanel.Dock="Top"/>
 
         <!-- For adaptive height set RowDefinitions="Auto,*" and AspectRatio="0.5" -->
