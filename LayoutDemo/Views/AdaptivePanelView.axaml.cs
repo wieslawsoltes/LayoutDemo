@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace LayoutDemo.Views
 {
-    public class WeightedPanelView : UserControl
+    public class AdaptivePanelView : UserControl
     {
-        public WeightedPanelView()
+        public AdaptivePanelView()
         {
             InitializeComponent();
         }

@@ -2,7 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace LayoutDemo
+namespace LayoutDemo.Views
 {
     public class VanishingPointPanelView : UserControl
     {
